@@ -1,0 +1,12 @@
+Functionality of calendar
+
+- As soon as the user open the application, I want to first retrieve 
+today's day in order to know which month, year and day we are.
+Based on the those I an calculate how many days does the month have and 
+build small atom components containing the number.
+
+
+The calendar will also have a select-box where the user is given the 
+possibility to choose the month as well as the year.
+NOTE: not possible to choose a month over the current one as well as for the year.
+
