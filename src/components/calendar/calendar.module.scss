@@ -1,3 +1,50 @@
-.calendarContainer {
-  border: 1px solid red;
+$calendar-week-days: 7;
+
+.mainContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.calendarElement {
+		display: grid;
+		grid-template-columns: repeat($calendar-week-days, 1fr);
+		gap: 1rem;
+
+		.day {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			height: 3.5rem;
+			width: 3.5rem;
+			cursor: pointer;
+
+			> p {
+				font-size: 1.2em;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: lightgrey;
+				border-radius: 50%;
+				height: 100%;
+				width: 100%;
+				z-index: -1;
+				display: none;
+			}
+
+			&:hover {
+				&::before {
+					display: block;
+				}
+			}
+		}
+	}
 }
