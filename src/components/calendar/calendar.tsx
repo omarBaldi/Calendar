@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { CSSProperties, FC, useEffect, useState } from 'react';
 import Styles from './calendar.module.scss';
 
 const Calendar: FC<{}> = (): JSX.Element => {
@@ -13,6 +13,25 @@ const Calendar: FC<{}> = (): JSX.Element => {
 		currentMonthDays: 0,
 		currentYear: 0,
 	});
+
+	const WEEK_DAYS_NUMBER = 7;
+
+	/* Array of string containing the week days */
+	const weekDaysLabels: string[] = [
+		'Mon',
+		'Tue',
+		'Wed',
+		'Thu',
+		'Fri',
+		'Sat',
+		'Sun',
+	];
+
+	/* Return an object containing the label of the week day and its relative index */
+	const weekDays: string[] = [
+		weekDaysLabels.pop() as string,
+		...weekDaysLabels.slice(0, 7),
+	];
 
 	/* *------------------------------------------------------------------------------------------ Calendar logic */
 
@@ -53,20 +72,27 @@ const Calendar: FC<{}> = (): JSX.Element => {
 		);
 
 		return (
-			<div className={Styles.calendarElement}>
-				{arrayDaysMonth.map((day: number, _: number) => {
-					return (
-						<div key={day} className={Styles.day}>
-							<p>{day}</p>
-						</div>
-					);
-				})}
+			<div
+				className={Styles.calendarElement}
+				style={{ '--weekDaysNumber': WEEK_DAYS_NUMBER } as CSSProperties}
+			>
+				{weekDays.map((weekDay: string, _: number) => (
+					<div key={weekDay} className={Styles.weekDay}>
+						{weekDay}
+					</div>
+				))}
+				{arrayDaysMonth.map((day: number, _: number) => (
+					<div key={day} className={Styles.day}>
+						<p>{day}</p>
+					</div>
+				))}
 			</div>
 		);
 	};
 
 	return (
 		<div className={Styles.mainContainer}>
+			{/* useMemo for whenever the days in the month and the year changes */}
 			<Calendar currentMonthDays={calendarData.currentMonthDays} />
 		</div>
 	);

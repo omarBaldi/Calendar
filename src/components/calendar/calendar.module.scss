@@ -1,13 +1,12 @@
-$calendar-week-days: 7;
-
 .mainContainer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100vh;
 
 	.calendarElement {
 		display: grid;
-		grid-template-columns: repeat($calendar-week-days, 1fr);
+		grid-template-columns: repeat(var(--weekDaysNumber), 1fr);
 		gap: 1rem;
 
 		.day {
@@ -45,6 +44,11 @@ $calendar-week-days: 7;
 					display: block;
 				}
 			}
+		}
+
+		.weekDay {
+			text-align: center;
+			font-weight: bold;
 		}
 	}
 }
