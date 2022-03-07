@@ -4,6 +4,12 @@
 	align-items: center;
 	height: 100vh;
 
+	.buttonArrowsRow {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 2rem;
+	}
+
 	.calendarElement {
 		display: grid;
 		grid-template-columns: repeat(var(--weekDaysNumber), 1fr);
